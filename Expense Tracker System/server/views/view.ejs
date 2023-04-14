@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+	<title>Student Portal</title>
+</head>
+<body>
+    <div class="container mt-3">
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">Student Id</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Courses</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <section data-position='students'>
+                    <% for ( var i=0; i< studentList.length; i++) { %>
+                    <tr>
+                        <th scope="row"><%= studentList[i].studentId %></th>
+                        <td><%= studentList[i].firstName %></td>
+                        <td><%= studentList[i].lastName %></td>
+                        <td><%= studentList[i].semester %></td>
+                        <td><%= studentList[i].list_of_course %></td>
+                        <td>
+                            <a class="link-offset-2-hover mt-3" href="/students/edit/<%= studentList[i].studentId %>">Edit</a>
+                            <a id="deleteButton" class="link-offset-2-hover mt-3" href="/students/delete/<%= studentList[i].studentId %>" >Delete</a>
+                        </td>
+                    </tr>
+                    <% } %>
+                    </section>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <a class="link-offset-2-hover mt-3" href="/students/add">Add a student</a>
+        </div>
+        
+    </div>
+
+    <script>
+
+        deleteForm = (studentId) => {
+            var form = document.createElement("form");
+            var element1 = document.createElement("input"); 
+            form.method = "POST";
+            form.action =  deleteButton.getAttribute("href");
+            element1.value= studentId;
+            element1.name = "studentId";
+            form.appendChild(element1);  
+            document.body.appendChild(form);
+            form.submit();
+        }
+        const deleteButton =  document.getElementById("deleteButton");
+        deleteButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            const studentId = deleteButton.getAttribute("href").toString().split("/").pop();
+            if(confirm("You want to delete " + studentId)){
+                deleteForm(studentId);
+            }
+        });  
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+
+</body>
+</html>

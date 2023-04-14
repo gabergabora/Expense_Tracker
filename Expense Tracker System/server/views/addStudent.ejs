@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+	<title>Student Portal</title>
+</head>
+<body>
+    <div class="container mt-3">
+        <h1>Add Student</h1>
+        <form class="form" method="post">
+           
+            <div class="row">
+                <%= notify.message %>
+            </div>
+           
+            <div class="form-group">
+                <label class="form-label">Student Id</label>
+                <input name="studentId" class="form-control" required type="number" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">First Name</label>
+                <input name="firstName" class="form-control" required type="text" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Last Name</label>
+                <input name="lastName" class="form-control" required type="text" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Semester</label>
+                <input name="semester" class="form-control" required type="number" />
+            </div>
+            <div class="form-group">
+                <label class="form-label">Course List</label>
+                <input name="list_of_course" class="form-control" required type="text" placeholder="Add all the course comma seperated eg. JS,Java"/>
+            </div>
+
+            <div class="form-row">
+                <button class="btn btn-dark mt-3" type="submit">Add</button>
+            </div>
+        </form>
+        <div class="row">
+            <a class="link-offset-2-hover mt-3" href="/students"> Go to List</a>
+
+        </div>
+       
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js" integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous"></script>
+
+</body>
+</html>
